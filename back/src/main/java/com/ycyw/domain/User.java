@@ -30,7 +30,7 @@ public class User implements Serializable {
     /** Identifiant unique de l’utilisateur. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    protected Long id;
 
     /** Adresse email de l’utilisateur. */
     @Column(length = 255, nullable = false)

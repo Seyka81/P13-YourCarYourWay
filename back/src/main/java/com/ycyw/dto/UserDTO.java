@@ -21,7 +21,7 @@ public class UserDTO {
     /**
      * Identifiant de l’utilisateur.
      */
-    protected Integer id;
+    protected Long id;
 
     /**
      * Nom de l’utilisateur.
