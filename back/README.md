@@ -15,7 +15,7 @@ L’app utilise WebSocket + STOMP pour pousser les mises à jour en temps réel 
 ### **Étape 1 : Cloner le projet**
 
 ```bash
-git clone 
+git clone https://github.com/Seyka81/P13-YourCarYourWay.git
 cd back
 ```
 
@@ -35,10 +35,10 @@ Afin de créer la clé voici les étapes :
 ```
 
 3. Copiez la clé générée.
-4. Ajoutez-la dans le fichier `src/main/resources/application.properties` en remplacant jwtsecret:
+4. Ajoutez-la dans le fichier `src/main/resources/application.properties` en remplacant <jwtsecret>:
 
 ```properties
-jwt.secret=jwtsecret
+jwt.secret=<jwtsecret>
 ```
 
 ### **Étape 3 : Configuration de la base de données avec Docker**
@@ -59,6 +59,7 @@ spring.datasource.password=secretpassword
 ```
 
 4. (optionnel) Vous pouvez load le fichier `../bdd/springbootdb.sql` dans votre base de données pour avoir des données de tests.
+
 - Utilisateur support:
   - email: test@test.fr
   - password: test

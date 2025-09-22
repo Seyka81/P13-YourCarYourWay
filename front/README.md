@@ -17,7 +17,7 @@ Make sure you have the following installed before starting:
 Clone the repository with ssh and install the required dependencies:
 
 ```bash
-git clone
+git clone https://github.com/Seyka81/P13-YourCarYourWay.git
 
 cd front
 
