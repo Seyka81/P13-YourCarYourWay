@@ -1,0 +1,66 @@
+<ng-container *ngIf="!selectedChatId; else detailTpl">
+  <section class="chatlist" aria-labelledby="chatlist-title">
+    <header class="chatlist__header">
+      <h2 class="chatlist__title" id="chatlist-title">Conversations</h2>
+
+      <form
+        class="chatlist__new"
+        (ngSubmit)="onCreateChat()"
+        autocomplete="off"
+        novalidate
+      >
+        <label for="newTitle" class="sr-only">Titre du tchat</label>
+        <input
+          id="newTitle"
+          class="chatlist__input"
+          type="text"
+          name="newTitle"
+          placeholder="Titre du tchat…"
+          [(ngModel)]="newTitle"
+        />
+        <button class="chatlist__btn" type="submit" [disabled]="!newTitle">
+          Créer
+        </button>
+      </form>
+    </header>
+
+    <div *ngIf="loading" class="chatlist__loading" aria-live="polite">
+      Chargement...
+    </div>
+
+    <div *ngIf="!loading && chats.length === 0" class="chatlist__empty">
+      Aucune conversation trouvée.
+    </div>
+
+    <ul *ngIf="!loading && chats.length > 0" class="chatlist__list" role="list">
+      <li *ngFor="let chat of chats" class="chatlist__item" role="listitem">
+        <div class="chatlist__info">
+          <h3 class="chatlist__chat-title">{{ chat.title }}</h3>
+          <p class="chatlist__meta">
+            Messages: {{ chat.messagesCount }} — Statut: {{ chat.status }}
+          </p>
+        </div>
+        <div class="chatlist__actions">
+          <button type="button" class="btn" (click)="openChat(chat.id)">
+            Ouvrir
+          </button>
+          <button
+            type="button"
+            class="btn btn--ghost"
+            (click)="cloturerChat(chat.id)"
+          >
+            Clôturer
+          </button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</ng-container>
+
+<ng-template #detailTpl>
+  <app-conversation-detail
+    [chatId]="selectedChatId!"
+    [chatTitle]="selectedChatTitle!"
+    (back)="closeChat()"
+  ></app-conversation-detail>
+</ng-template>

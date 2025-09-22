@@ -1,0 +1,55 @@
+.center {
+  height: 92dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img {
+  width: 35%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+.button-section {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  height: 2rem;
+  @media screen and (max-width: 390px) {
+    width: 90%;
+    gap: 0.5rem;
+  }
+  button {
+    border-radius: 10px;
+    border: black 1px solid;
+    padding: 0 1.5rem 0 1.5rem;
+  }
+  :hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+footer {
+  height: 5dvh;
+  width: 100%;
+  border-top: 1px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.75rem;
+  border: #000000 1px solid;
+  padding: 0.5rem;
+  border-radius: 10px;
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

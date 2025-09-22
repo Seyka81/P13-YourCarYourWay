@@ -1,0 +1,91 @@
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.back-btn {
+  font-size: 1rem;
+  background: none;
+  border: 0;
+  color: #007bff;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.loading {
+  padding: 1rem;
+  color: #666;
+}
+
+.messages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 50vh;
+  overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.message {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+.message:last-child {
+  border-bottom: 0;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+}
+.date {
+  color: #999;
+  font-size: 0.85rem;
+}
+.content {
+  margin-top: 0.25rem;
+}
+
+.composer {
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.input {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+.send-btn {
+  border: 0;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  &:hover {
+    transform: scale(1);
+  }
+}

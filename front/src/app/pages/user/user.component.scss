@@ -1,0 +1,57 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  @media screen and (max-width: 390px) {
+    width: 100%;
+  }
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.error {
+  padding-bottom: 1rem;
+}
+button {
+  background-color: #2937f8;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 40%;
+  cursor: pointer;
+  margin: auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(123, 94, 248, 0.3);
+  }
+}
+
+.user-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+hr {
+  margin: 2rem;
+}
+
+.themes {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  @media screen and (max-width: 390px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

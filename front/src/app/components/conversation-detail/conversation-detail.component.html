@@ -1,0 +1,36 @@
+<div class="chat-header">
+  <button class="back-btn" (click)="goBack()">← Retour à la liste</button>
+  <h5 class="title">Tchat #{{ chatId }}: {{ chatTitle }}</h5>
+</div>
+
+<div *ngIf="loading" class="loading">Chargement des messages...</div>
+
+<ul *ngIf="!loading" class="messages">
+  <li *ngFor="let m of messages" class="message">
+    <div class="meta">
+      <strong>{{ m.sender }}</strong>
+      <small class="date">{{ m.sentAt | date : "short" }}</small>
+    </div>
+    <div class="content">{{ m.content }}</div>
+  </li>
+</ul>
+
+<div class="composer">
+  <textarea
+    class="input"
+    rows="2"
+    placeholder="Écrire un message…"
+    [(ngModel)]="draft"
+    (keydown)="onKeyDown($event)"
+    [disabled]="sending"
+  ></textarea>
+  <div class="actions">
+    <button
+      class="send-btn"
+      (click)="send()"
+      [disabled]="sending || draft.trim() === ''"
+    >
+      {{ sending ? "Envoi…" : "Envoyer" }}
+    </button>
+  </div>
+</div>

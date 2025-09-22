@@ -1,0 +1,34 @@
+<app-header [isNotAuth]="true"></app-header>
+<main>
+  <div class="container">
+    <a href="" class="back-arrow">←</a>
+    <div class="logo">
+      <img src="/assets/logo_p6.png" alt="logo" />
+    </div>
+    <div class="form-container">
+      <h1>Se connecter</h1>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <label for="usernameEmail">E-mail ou nom d’utilisateur</label>
+        <input
+          type="text"
+          id="usernameEmail"
+          name="usernameEmail"
+          formControlName="email"
+          required
+        />
+
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          required
+        />
+
+        <button type="submit" [disabled]="form.invalid">Se connecter</button>
+        <span *ngIf="onError" class="error">An error occurred</span>
+      </form>
+    </div>
+  </div>
+</main>
