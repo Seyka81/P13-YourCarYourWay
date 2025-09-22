@@ -1,0 +1,89 @@
+<div class="contact">
+  <div class="contact__card">
+    <h2 class="contact__title">Contactez-nous</h2>
+    <p class="contact__subtitle">Réponse sous 48h ouvrées.</p>
+
+    <form
+      class="contact__form"
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+      <div class="form-field">
+        <label for="name" class="form-label">Nom</label>
+        <input
+          id="name"
+          type="text"
+          class="form-input"
+          formControlName="name"
+        />
+        <small
+          class="form-error"
+          *ngIf="name?.errors && (name?.dirty || name?.touched)"
+        >
+          {{ name?.errors?.['required'] ? 'Nom requis' : '' }}
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          class="form-input"
+          formControlName="email"
+        />
+        <small
+          class="form-error"
+          *ngIf="email?.errors && (email?.dirty || email?.touched)"
+        >
+          {{ email?.errors?.['required'] ? 'Email requis' : '' }}
+          {{ email?.errors?.['email'] ? 'Format d’email invalide' : '' }}
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="subject" class="form-label">Sujet</label>
+        <input
+          id="subject"
+          type="text"
+          class="form-input"
+          formControlName="subject"
+        />
+        <small
+          class="form-error"
+          *ngIf="subject?.errors && (subject?.dirty || subject?.touched)"
+        >
+          {{ subject?.errors?.['required'] ? 'Sujet requis' : '' }}
+        </small>
+      </div>
+
+      <div class="form-field">
+        <label for="message" class="form-label">Message</label>
+        <textarea
+          id="message"
+          rows="6"
+          class="form-textarea"
+          formControlName="message"
+        ></textarea>
+        <small
+          class="form-error"
+          *ngIf="message?.errors && (message?.dirty || message?.touched)"
+        >
+          {{ message?.errors?.['required'] ? 'Message requis' : '' }}
+          {{ message?.errors?.['minlength'] ? 'Au moins 10 caractères' : '' }}
+        </small>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn--primary"
+        [disabled]="formGroup.invalid || loading"
+      >
+        <span *ngIf="!loading">Envoyer</span>
+        <span *ngIf="loading" class="spinner" aria-hidden="true"></span>
+        <span *ngIf="loading" class="sr-only">Envoi en cours…</span>
+      </button>
+    </form>
+  </div>
+</div>

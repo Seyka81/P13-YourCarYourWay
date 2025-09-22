@@ -1,0 +1,56 @@
+<app-header [isNotAuth]="false"></app-header>
+<main>
+  <div class="user-container">
+    <h2>Profil Utilisateur</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input
+        type="text"
+        id="username"
+        name="username"
+        formControlName="username"
+        [placeholder]="user.name"
+        required
+      />
+      <span
+        *ngIf="form.get('username')?.invalid && form.get('username')?.touched"
+        class="error"
+      >
+        Le nom d'utilisateur est requis.
+      </span>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        [placeholder]="user.email"
+        required
+      />
+      <span
+        *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+        class="error"
+      >
+        Veuillez entrer une adresse e-mail valide.
+      </span>
+
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        placeholder="Mot de passe"
+        required
+      />
+      <span
+        *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+        class="error"
+      >
+        Le mot de passe doit contenir une majuscule, une minuscule, un chiffre
+        et un caractère spécial.
+      </span>
+
+      <button type="submit" [disabled]="form.invalid">Sauvegarder</button>
+    </form>
+  </div>
+  <hr />
+</main>

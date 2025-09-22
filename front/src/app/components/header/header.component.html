@@ -1,0 +1,50 @@
+<header [ngClass]="{ special: isNotAuth }">
+  <a href="/home">
+    <img src="../../../assets/logo_p6.png" alt="logo" class="left logo" />
+  </a>
+
+  <div class="right right-desktop" *ngIf="$isLogged() | async">
+    <nav>
+      <a
+        class="disconnect"
+        (click)="disconnect()"
+        (keydown.enter)="disconnect()"
+        tabindex="0"
+        >Se déconnecter</a
+      >
+      <a routerLink="/support" routerLinkActive="active-link">Support</a>
+    </nav>
+    <a routerLink="/user">
+      <img src="/assets/user.webp" alt="user" class="user-icon" />
+    </a>
+  </div>
+  <div class="right right-mobile" *ngIf="$isLogged() | async">
+    <img
+      src="../../../assets/bar.png"
+      alt="bar"
+      class="bar"
+      (click)="openNav()"
+      (keydown.enter)="openNav()"
+      tabindex="0"
+    />
+  </div>
+</header>
+<div
+  class="aside"
+  [ngClass]="{ special: isNotAuth && isNavOpen }"
+  *ngIf="isNavOpen"
+>
+  <nav>
+    <a
+      class="disconnect"
+      (click)="disconnect()"
+      (keydown.enter)="disconnect()"
+      tabindex="0"
+      >Se déconnecter</a
+    >
+    <a routerLink="/support" routerLinkActive="active-link">Support</a>
+  </nav>
+  <a routerLink="/user">
+    <img src="/assets/user.webp" alt="user" class="user-icon" />
+  </a>
+</div>

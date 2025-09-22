@@ -1,0 +1,67 @@
+.logo {
+  width: 55%;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+}
+
+.container {
+  padding-top: 3rem;
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container {
+  height: 100%;
+  width: 25%;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+}
+
+.back-arrow {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #2937f8;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(123, 94, 248, 0.3);
+  }
+}
