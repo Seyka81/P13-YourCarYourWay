@@ -110,11 +110,6 @@ CREATE TABLE `vehicles` (
   `acriss_code`        VARCHAR(4) NOT NULL,
   `matriculation`      VARCHAR(20) NOT NULL,
   `brand`              VARCHAR(100) NOT NULL,
-  `category`           VARCHAR(255) NOT NULL,
-  `type`               VARCHAR(255) NOT NULL,
-  `transmission`       VARCHAR(255) NOT NULL,
-  `passenger_capacity` VARCHAR(2) NOT NULL,
-  `fuel`               VARCHAR(50) NOT NULL,
   `year`               SMALLINT NOT NULL,
   `image_url`          VARCHAR(2048),
   `created_at`         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -130,6 +125,7 @@ CREATE TABLE `vehicles` (
 -- ------------------------------------------------------
 CREATE TABLE `rentals` (
   `id`                   BIGINT NOT NULL AUTO_INCREMENT,
+  `status`               ENUM('TERMINATE','OPEN','REFUND') NOT NULL DEFAULT 'OPEN',
   `agency_id`            BIGINT NOT NULL,
   `vehicle_id`           BIGINT NOT NULL,
   `client_user_id`       BIGINT NOT NULL,
@@ -157,6 +153,27 @@ CREATE TABLE `rentals` (
   CONSTRAINT `chk_rentals_time_order`
     CHECK (`arrival_date_time` > `depart_date_time`)
 );
+
+-- ------------------------------------------------------
+-- Table : Payement
+-- ------------------------------------------------------
+CREATE TABLE `payments` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `rental_id` BIGINT NOT NULL,
+  `transaction_id` VARCHAR(100) NOT NULL,
+  `refund_id` VARCHAR(100),
+  `price` BIGINT NOT NULL,
+  `currency` CHAR(3) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_payments_transaction` (`transaction_id`),
+  KEY `idx_payments_rental` (`rental_id`),
+  CONSTRAINT `fk_payments_rental`
+    FOREIGN KEY (`rental_id`) REFERENCES `rentals`(`id`)
+    ON UPDATE RESTRICT ON DELETE RESTRICT
+);
+
 
 -- =====================================================================
 -- Données (inserts) — respecter l'ordre : users -> chat -> message
